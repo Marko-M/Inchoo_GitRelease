@@ -1,6 +1,6 @@
 #!/usr/bin/python
 # Name: Inchoo_GitRelease
-# Author: Marko Martinović (marko.martinovic@inchoo.net)
+# Author: Marko Martinovic (marko.martinovic@inchoo.net)
 # License: GPLv2
 
 # Git directory path
