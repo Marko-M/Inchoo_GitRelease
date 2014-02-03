@@ -6,7 +6,10 @@
 # Git directory path
 git_path = '.'
 
-# Git tag format, use {:d} as counter to prevent duplicate tags
+# Git tag format.
+# To make sure tag names are unique use:
+# all directives from time.strftime()
+# {:d} from str.format() to place increment id
 git_tag_format = "%Y/%m/%d_{:d}"
 
 #### config ends here ####
