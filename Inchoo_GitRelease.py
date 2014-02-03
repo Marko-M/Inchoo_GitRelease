@@ -6,8 +6,8 @@
 # Git directory path
 git_path = '.'
 
-# Git tag format
-git_tag_format = "%Y/%m/%d"
+# Git tag format, use {:d} as counter to prevent duplicate tags
+git_tag_format = "%Y/%m/%d_{:d}"
 
 #### config ends here ####
 
@@ -46,13 +46,14 @@ origin = repo.remotes.origin
 # Pull from develop branch
 origin.pull('develop')
 
-# If tag already exists, calculate suffix, for eg.
-# 2014/02/02_0, 2014/02/02_1, 2014/02/02_2 etc.
+# If tag already exists, calculate suffix
 release_tag = time.strftime(git_tag_format)
 release_tag_suffx = 0
-while release_tag + "_" + str(release_tag_suffx) in repo.tags:
+
+while release_tag.format(release_tag_suffx) in repo.tags:
    release_tag_suffx = release_tag_suffx + 1
-release_tag = release_tag + "_" + str(release_tag_suffx)
+
+release_tag = release_tag.format(release_tag_suffx)
 
 # Create the release branch
 release_branch = "release/"+ release_tag
